@@ -6,12 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 00:32:41 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/31 05:23:18 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/31 21:40:42 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 int	print_hex(unsigned long n, bool ucase)
 {

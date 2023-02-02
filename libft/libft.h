@@ -6,16 +6,22 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/19 18:01:58 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/31 21:36:19 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <limits.h>
+# include <stdarg.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
+
+# define SHARP 0
+# define SPACE 1
+# define PLUS 2
 
 typedef struct s_list
 {
@@ -68,5 +74,13 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+int					ft_printf(const char *str, ...);
+int					print_c(char c, bool *options);
+int					print_s(char *s, bool *options);
+int					print_d(int n, bool *options);
+int					print_u(unsigned int n, bool *options);
+int					print_x(unsigned long n, bool ucase, bool pointer,
+						bool *options);
+int					print_per(void);
 
 #endif

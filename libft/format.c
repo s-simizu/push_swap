@@ -6,12 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 00:32:34 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/31 05:23:02 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/01/31 21:40:35 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
 int	print_per(void)
 {

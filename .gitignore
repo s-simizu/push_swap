@@ -1,4 +1,5 @@
 *.o
 *.a
 a.out
+*test*
 push_swap

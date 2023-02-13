@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:04:15 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 10:39:30 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:49:06 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,10 @@ size_t	next_index(t_stack *s, size_t index)
 size_t	prev_index(t_stack *s, size_t index)
 {
 	return ((index + s->capacity - 1) % s->capacity);
+}
+
+void	free_stack(t_stack *s)
+{
+	free(s->array);
+	free(s);
 }

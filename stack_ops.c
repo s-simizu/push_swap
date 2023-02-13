@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:02:25 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 14:25:06 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:40:41 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@ void	push(t_stack *s, int val)
 {
 	if (s->size == s->capacity)
 		return ;
-	if (s->size != 0)
-		s->top = next_index(s, s->top);
 	s->array[s->top] = val;
+	s->top = next_index(s, s->top);
 	s->size++;
 }
 
 int	pop(t_stack *s)
 {
-	int	val;
-
 	if (s->size == 0)
 		return (0);
-	val = s->array[s->top];
-	if (s->size != 1)
-		s->top = prev_index(s, s->top);
+	s->top = prev_index(s, s->top);
 	s->size--;
-	return (val);
+	return (s->array[s->top]);
 }
 
 void	swap(t_stack *s)
@@ -52,9 +47,9 @@ void	rotate(t_stack *s)
 
 	if (s->size < 2)
 		return ;
-	val = s->array[s->top];
+    s->top = prev_index(s, s->top);
 	s->bottom = prev_index(s, s->bottom);
-	s->array[s->bottom] = val;
+    s->array[s->bottom] = s->array[s->top];
 }
 
 void	reverse(t_stack *s)
@@ -63,8 +58,7 @@ void	reverse(t_stack *s)
 
 	if (s->size < 2)
 		return ;
-	val = s->array[s->bottom];
+	s->array[s->top] = s->array[s->bottom];
 	s->bottom = next_index(s, s->bottom);
 	s->top = next_index(s, s->top);
-	s->array[s->top] = val;
 }

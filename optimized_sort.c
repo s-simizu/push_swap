@@ -6,13 +6,13 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:02:46 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 20:28:30 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:58:12 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "conditions.h"
 #include "operations.h"
-#include "sort.h"
+#include "optimized_sort.h"
 
 void	sort_2(t_stack *s, t_list **ops)
 {

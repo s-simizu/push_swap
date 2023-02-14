@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:02:46 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 21:58:12 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/14 08:31:12 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	sort_2(t_stack *s, t_list **ops)
 {
 	t_list	*op;
 
-	if (get_top_n(s, 1) <= get_top_n(s, 2))
+	if (get_top_n(s, 1) < get_top_n(s, 2))
 		return ;
 	add_swap(s, ops);
 }
 
 bool	is_sorted_3(t_stack *s)
 {
-	return (get_top_n(s, 1) <= get_top_n(s, 2) && get_top_n(s,
-			2) <= get_top_n(s, 3));
+	return (get_top_n(s, 1) < get_top_n(s, 2) && get_top_n(s, 2) < get_top_n(s,
+			3));
 }
 
 void	sort_3_with_rotate(t_stack *s, t_list **ops)
@@ -65,4 +65,17 @@ void	sort_3_without_rotate(t_stack *s, t_stack *other, t_list **ops)
 		add_step_312(s, other, ops);
 	else if (condition_321(s))
 		add_step_321(s, other, ops);
+}
+
+void	optimized_sort(t_stack *s, t_stack *other, size_t sort_size,
+		t_list **ops)
+{
+	if (sort_size == 1)
+		return ;
+	if (sort_size == 2)
+		sort_2(s, ops);
+	else if (sort_size == 3 && s->size == 3)
+		sort_3_with_rotate(s, ops);
+	else if (sort_size == 3 && s->size != 3)
+		sort_3_without_rotate(s, other, ops);
 }

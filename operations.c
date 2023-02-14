@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:04:42 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 20:14:24 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/14 08:49:21 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	add_push(t_stack *s, t_stack *from, t_list **ops)
 
 void	add_rotate(t_stack *s, t_list **ops)
 {
+	rotate(s);
 	if (s->name == STACK_A)
 		add_op(ops, "ra");
 	else
@@ -51,6 +52,7 @@ void	add_rotate(t_stack *s, t_list **ops)
 
 void	add_reverse(t_stack *s, t_list **ops)
 {
+	reverse(s);
 	if (s->name == STACK_A)
 		add_op(ops, "rra");
 	else

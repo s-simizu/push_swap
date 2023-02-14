@@ -6,34 +6,14 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:32:02 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 22:37:32 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:11:56 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "merge_sort.h"
 #include "operations.h"
 #include "optimized_sort.h"
 #include "stack.h"
-
-// merge_sort()
-// {
-//     divide(a);
-//     merge_sort(a);
-//     merge_sort(b);
-//     merge(a, b);
-// }
-
-static void	optimized_sort(t_stack *s, t_stack *other, size_t sort_size,
-		t_list **ops)
-{
-	if (sort_size == 1)
-		return ;
-	if (sort_size == 2)
-		sort_2(s, ops);
-	else if (sort_size == 3 && s->size == 3)
-		sort_3_with_rotate(s, ops);
-	else if (sort_size == 3 && s->size != 3)
-		sort_3_without_rotate(s, other, ops);
-}
 
 static void	divide_stack(t_stack *s, t_stack *other, size_t half_size,
 		t_list **ops)
@@ -48,36 +28,63 @@ static void	divide_stack(t_stack *s, t_stack *other, size_t half_size,
 	}
 }
 
-static void	merge_stack(t_stack *s, t_stack *other, size_t sort_size,
-		t_list **ops)
+static void	recover_stack(t_stack *s, size_t recover_size, t_list **ops)
 {
+	size_t	remain_size;
 	size_t	i;
 
+	remain_size = s->size - recover_size;
+	if (remain_size == 0)
+		return ;
 	i = 0;
-	while (i < sort_size)
+	while (i < recover_size)
 	{
-		if (get_top_n(s, 1) > get_top_n(other, 1))
-			add_push(s, other, ops);
-		add_rotate(s, ops);
+		add_reverse(s, ops);
 		i++;
 	}
 }
 
+static size_t	get_half_size(size_t size)
+{
+	if (size == 4)
+		return (1);
+	return (size / 2);
+}
+
+static void	merge_stack(t_stack *s, t_stack *other, t_msize msize, t_list **ops)
+{
+	while (msize.s_size || msize.other_size)
+	{
+		if ((get_top_n(s, 1) < get_top_n(other, 1) && msize.s_size)
+			|| !msize.other_size)
+		{
+			add_rotate(s, ops);
+			msize.s_size--;
+		}
+		else
+		{
+			add_push(s, other, ops);
+			add_rotate(s, ops);
+			msize.other_size--;
+		}
+	}
+	recover_stack(s, msize.sort_size, ops);
+}
+
 void	merge_sort(t_stack *s, t_stack *other, size_t sort_size, t_list **ops)
 {
-	size_t	half_size;
+	t_msize	msize;
 
 	if (sort_size <= 3)
 	{
 		optimized_sort(s, other, sort_size, ops);
 		return ;
 	}
-	if (sort_size == 4)
-		half_size = 1;
-	else
-		half_size = sort_size / 2;
-	divide_stack(s, other, half_size, ops);
-	merge_sort(s, other, sort_size - half_size, ops);
-	merge_sort(other, s, half_size, ops);
-	merge_stack(s, other, sort_size, ops);
+	msize.sort_size = sort_size;
+	msize.other_size = get_half_size(sort_size);
+	msize.s_size = sort_size - msize.other_size;
+	divide_stack(s, other, msize.other_size, ops);
+	merge_sort(s, other, msize.s_size, ops);
+	merge_sort(other, s, msize.other_size, ops);
+	merge_stack(s, other, msize, ops);
 }

@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:04:15 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 18:22:15 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:14:02 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	get_top_n(t_stack *s, size_t n)
 {
 	size_t	index;
 
+	if (n > s->size)
+		return (0);
 	if (n > s->capacity)
 		n %= s->capacity;
 	index = (s->top + s->capacity - n) % s->capacity;

@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:24:32 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/14 08:22:08 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:31:33 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ typedef struct s_merge_size
 }			t_msize;
 
 void		merge_sort(t_stack *s, t_stack *other, size_t sort_size,
-				t_list **ops);
+				t_ops **ops);
 
 #endif

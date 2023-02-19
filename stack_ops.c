@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:02:25 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/13 14:58:55 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/19 19:03:45 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	swap(t_stack *s)
 
 void	rotate(t_stack *s)
 {
-	int	val;
-
 	if (s->size < 2)
 		return ;
 	s->top = prev_index(s, s->top);
@@ -56,8 +54,6 @@ void	rotate(t_stack *s)
 
 void	reverse(t_stack *s)
 {
-	int	val;
-
 	if (s->size < 2)
 		return ;
 	s->array[s->top] = s->array[s->bottom];

@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:32:02 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/14 13:11:56 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/19 21:32:48 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "stack.h"
 
 static void	divide_stack(t_stack *s, t_stack *other, size_t half_size,
-		t_list **ops)
+		t_ops **ops)
 {
 	size_t	i;
 
@@ -28,13 +28,11 @@ static void	divide_stack(t_stack *s, t_stack *other, size_t half_size,
 	}
 }
 
-static void	recover_stack(t_stack *s, size_t recover_size, t_list **ops)
+static void	recover_stack(t_stack *s, size_t recover_size, t_ops **ops)
 {
-	size_t	remain_size;
 	size_t	i;
 
-	remain_size = s->size - recover_size;
-	if (remain_size == 0)
+	if (recover_size == s->size)
 		return ;
 	i = 0;
 	while (i < recover_size)
@@ -51,7 +49,7 @@ static size_t	get_half_size(size_t size)
 	return (size / 2);
 }
 
-static void	merge_stack(t_stack *s, t_stack *other, t_msize msize, t_list **ops)
+static void	merge_stack(t_stack *s, t_stack *other, t_msize msize, t_ops **ops)
 {
 	while (msize.s_size || msize.other_size)
 	{
@@ -71,7 +69,7 @@ static void	merge_stack(t_stack *s, t_stack *other, t_msize msize, t_list **ops)
 	recover_stack(s, msize.sort_size, ops);
 }
 
-void	merge_sort(t_stack *s, t_stack *other, size_t sort_size, t_list **ops)
+void	merge_sort(t_stack *s, t_stack *other, size_t sort_size, t_ops **ops)
 {
 	t_msize	msize;
 

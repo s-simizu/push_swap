@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations2.c                                      :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 18:49:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/19 17:44:02 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/02/19 17:32:19 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/02/19 18:30:20 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
-#include "stack.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-void	add_ss(t_ops **ops)
-{
-	add_op(ops, SS);
-}
+# include <stdlib.h>
+# include <unistd.h>
 
-void	add_rr(t_ops **ops)
-{
-	add_op(ops, RR);
-}
+void	error(void);
 
-void	add_rrr(t_ops **ops)
-{
-	add_op(ops, RRR);
-}
+#endif

@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations2.c                                      :+:      :+:    :+:   */
+/*   reduce.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 18:49:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/19 17:44:02 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/02/19 21:31:22 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/02/19 22:18:25 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
-#include "stack.h"
+#ifndef REDUCE_H
+# define REDUCE_H
 
-void	add_ss(t_ops **ops)
-{
-	add_op(ops, SS);
-}
+# include "operations.h"
 
-void	add_rr(t_ops **ops)
-{
-	add_op(ops, RR);
-}
+bool	cancelled_ops(t_ops *ops, t_op op);
+bool	summarized_ops(t_ops *ops, t_op op);
 
-void	add_rrr(t_ops **ops)
-{
-	add_op(ops, RRR);
-}
+#endif

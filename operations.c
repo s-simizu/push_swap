@@ -6,55 +6,45 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:04:42 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/14 08:49:21 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/19 17:44:11 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 #include "stack.h"
 
-void	add_op(t_list **ops, char *str)
-{
-	t_list	*op;
-
-	op = ft_lstnew(str);
-	if (!op)
-		exit(1);
-	ft_lstadd_back(ops, op);
-}
-
-void	add_swap(t_stack *s, t_list **ops)
+void	add_swap(t_stack *s, t_ops **ops)
 {
 	swap(s);
 	if (s->name == STACK_A)
-		add_op(ops, "sa");
+		add_op(ops, SA);
 	else
-		add_op(ops, "sb");
+		add_op(ops, SB);
 }
 
-void	add_push(t_stack *s, t_stack *from, t_list **ops)
+void	add_push(t_stack *s, t_stack *from, t_ops **ops)
 {
 	push(s, pop(from));
 	if (s->name == STACK_A)
-		add_op(ops, "pa");
+		add_op(ops, PA);
 	else
-		add_op(ops, "pb");
+		add_op(ops, PB);
 }
 
-void	add_rotate(t_stack *s, t_list **ops)
+void	add_rotate(t_stack *s, t_ops **ops)
 {
 	rotate(s);
 	if (s->name == STACK_A)
-		add_op(ops, "ra");
+		add_op(ops, RA);
 	else
-		add_op(ops, "rb");
+		add_op(ops, RB);
 }
 
-void	add_reverse(t_stack *s, t_list **ops)
+void	add_reverse(t_stack *s, t_ops **ops)
 {
 	reverse(s);
 	if (s->name == STACK_A)
-		add_op(ops, "rra");
+		add_op(ops, RRA);
 	else
-		add_op(ops, "rrb");
+		add_op(ops, RRB);
 }

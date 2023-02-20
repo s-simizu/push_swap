@@ -6,14 +6,13 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:31:00 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 03:50:18 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 04:05:31 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <reduce.h>
 #include <stdlib.h>
-#include <types.h>
 
 t_ops	*new_ops(int capacity)
 {

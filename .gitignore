@@ -3,4 +3,5 @@
 a.out
 *test*
 *.txt
+.vscode
 push_swap

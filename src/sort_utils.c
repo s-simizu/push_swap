@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compress_coodinates.c                              :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 00:20:30 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 01:20:09 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:05:47 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <types.h>
 
-int	*sorted_array(int *array, int size)
+static int	*sorted_array(int *array, int size)
 {
 	int	*sorted;
 
@@ -53,4 +53,18 @@ int	compress_coordinates(int *array, int size)
 	}
 	free(sorted);
 	return (SUCCESS);
+}
+
+bool	is_sorted(int *array, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (array[i] > array[i + 1])
+			return (false);
+		i++;
+	}
+	return (true);
 }

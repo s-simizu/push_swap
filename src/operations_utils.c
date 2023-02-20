@@ -6,61 +6,87 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:31:00 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/19 22:18:34 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 03:38:06 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
-#include "operations.h"
-#include "reduce.h"
+#include <libft.h>
+#include <reduce.h>
+#include <stdlib.h>
+#include <types.h>
 
-t_ops	*new_ops(size_t capacity)
+t_ops	*new_ops(int capacity)
 {
 	t_ops	*ops;
 
 	ops = malloc(sizeof(t_ops));
 	if (!ops)
-		error();
+		print_error();
 	ops->array = malloc(capacity * sizeof(t_op));
 	if (!ops->array)
 	{
 		free(ops);
-		error();
+		return (NULL);
 	}
 	ops->capacity = capacity;
 	ops->size = 0;
 	return (ops);
 }
 
-static void	realloc_ops(t_ops **ops)
-{
-	t_ops	*new;
+// static void	realloc_ops(t_ops **ops)
+// {
+// 	t_ops	*new;
 
-	new = new_ops((*ops)->capacity * 2);
-	if (!new)
+// 	new = new_ops((*ops)->capacity * 2);
+// 	if (!new)
+// 	{
+// 		free((*ops)->array);
+// 		free(*ops);
+// 		print_error();
+// 	}
+// 	ft_memcpy(new->array, (*ops)->array, (*ops)->capacity * sizeof(t_op));
+// 	new->capacity = (*ops)->capacity * 2;
+// 	new->size = (*ops)->capacity;
+// 	free((*ops)->array);
+// 	free(*ops);
+// 	*ops = new;
+// }
+
+static int	realloc_ops(t_ops *ops)
+{
+	t_op	*new_array;
+	int		new_size;
+
+	new_size = ft_min(ops->capacity * sizeof(t_op) * 2, INT_MAX);
+	new_array = malloc(new_size);
+	if (!new_array)
 	{
-		free((*ops)->array);
-		free(*ops);
-		error();
+		free(ops->array);
+		free(ops);
+		return (ERROR);
 	}
-	ft_memcpy(new->array, (*ops)->array, (*ops)->capacity * sizeof(t_op));
-	new->capacity = (*ops)->capacity * 2;
-	new->size = (*ops)->capacity;
-	free((*ops)->array);
-	free(*ops);
-	*ops = new;
+	ft_memcpy(new_array, ops->array, ops->capacity * sizeof(t_op));
+	free(ops->array);
+	ops->array = new_array;
+	ops->capacity = ops->capacity * 2;
+	ops->size = ops->capacity;
+	return (SUCCESS);
 }
 
-void	add_op(t_ops **ops, t_op op)
+int	add_op(t_ops *ops, t_op op)
 {
-	if (cancelled_ops(*ops, op))
-		return ;
-	if (summarized_ops(*ops, op))
-		return ;
-	if ((*ops)->size == (*ops)->capacity)
-		realloc_ops(ops);
-	(*ops)->array[(*ops)->size] = op;
-	(*ops)->size++;
+	if (cancelled_ops(ops, op))
+		return (SUCCESS);
+	if (summarized_ops(ops, op))
+		return (SUCCESS);
+	if (ops->size == ops->capacity)
+	{
+		if (realloc_ops(ops) == ERROR)
+			return (ERROR);
+	}
+	ops->array[ops->size] = op;
+	ops->size++;
+	return (SUCCESS);
 }
 
 static void	print_op(t_op op)
@@ -91,7 +117,7 @@ static void	print_op(t_op op)
 
 void	print_ops(t_ops *ops)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < ops->size)

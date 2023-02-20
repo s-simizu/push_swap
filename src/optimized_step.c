@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimized_sort2.c                                  :+:      :+:    :+:   */
+/*   optimized_step.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:40:00 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/19 18:20:51 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:46:41 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include <operations.h>
+#include <stack.h>
 
 static void	add_pop(t_stack *s, t_stack *other, t_ops **ops)
 {

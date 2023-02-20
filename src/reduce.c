@@ -6,11 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:15:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/19 22:21:44 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:18:59 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "reduce.h"
+#include <types.h>
 
 static bool	can_cancel(t_op op1, t_op op2)
 {

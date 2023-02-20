@@ -6,11 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:19:06 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/14 07:47:13 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:48:29 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include <stack.h>
 
 bool	condition_213(t_stack *s)
 {

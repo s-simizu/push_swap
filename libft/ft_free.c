@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 22:06:41 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/02 22:07:31 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/02/11 10:42:55 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/02/21 00:32:13 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# define SUCCESS 0
-# define ERROR -1
-
-#endif
+void	*ft_free(void **p)
+{
+	if (!p)
+		return (NULL);
+	free(*p);
+	*p = NULL;
+	return (*p);
+}

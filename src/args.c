@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge_sort.h                                       :+:      :+:    :+:   */
+/*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 22:24:32 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/19 18:31:33 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/02/20 15:49:56 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/02/21 01:20:36 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MERGE_SORT_H
-# define MERGE_SORT_H
+#include <libft.h>
+#include <stack.h>
+#include <types.h>
 
-# include "operations.h"
-# include "stack.h"
-
-typedef struct s_merge_size
+int	args_into_stack(t_stack *s, int argc, char **argv)
 {
-	size_t	sort_size;
-	size_t	s_size;
-	size_t	other_size;
-}			t_msize;
+	int	i;
 
-void		merge_sort(t_stack *s, t_stack *other, size_t sort_size,
-				t_ops **ops);
-
-#endif
+	i = 0;
+	while (i < argc - 1)
+	{
+		push(s, ft_atoi(argv[argc - i - 1]));
+		i++;
+	}
+	return (SUCCESS);
+}

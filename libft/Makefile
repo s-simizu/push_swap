@@ -6,7 +6,7 @@
 #    By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 00:18:44 by sshimizu          #+#    #+#              #
-#    Updated: 2023/01/31 21:38:43 by sshimizu         ###   ########.fr        #
+#    Updated: 2023/02/21 03:28:03 by sshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ ft_strlcpy.c            ft_strlen.c             ft_strmapi.c \
 ft_strncmp.c            ft_strnstr.c            ft_strrchr.c \
 ft_strtrim.c            ft_substr.c             ft_tolower.c \
 ft_toupper.c            ft_printf.c             format.c \
-format2.c
+format2.c				ft_free.c				ft_swap.c \
+ft_bubble_sort.c		ft_min.c				ft_max.c
 
 B_SRCS = ft_lstadd_back.c        ft_lstadd_front.c       ft_lstclear.c \
 ft_lstdelone.c          ft_lstiter.c            ft_lstlast.c \

@@ -6,13 +6,14 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:04:15 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/16 21:14:02 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:38:24 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include <stdlib.h>
+#include <types.h>
 
-t_stack	*new_stack(t_name name, size_t capacity)
+t_stack	*new_stack(t_name name, int capacity)
 {
 	t_stack	*s;
 	int		*array;
@@ -35,19 +36,19 @@ t_stack	*new_stack(t_name name, size_t capacity)
 	return (s);
 }
 
-size_t	next_index(t_stack *s, size_t index)
+int	next_index(t_stack *s, int index)
 {
 	return ((index + 1) % s->capacity);
 }
 
-size_t	prev_index(t_stack *s, size_t index)
+int	prev_index(t_stack *s, int index)
 {
 	return ((index + s->capacity - 1) % s->capacity);
 }
 
-int	get_top_n(t_stack *s, size_t n)
+int	get_top_n(t_stack *s, int n)
 {
-	size_t	index;
+	int	index;
 
 	if (n > s->size)
 		return (0);

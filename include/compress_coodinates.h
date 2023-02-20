@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   compress_coodinates.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 21:31:57 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/04 22:17:15 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/02/20 14:47:56 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/02/21 01:18:05 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
-#include "stack.h"
-#include <stdio.h>
+#ifndef COMPRESS_COODINATES_H
+# define COMPRESS_COODINATES_H
 
-int	main(int argc, char **argv)
-{
-	t_stack	*a;
-	t_stack	*b;
-	t_list	*inst;
+# include <types.h>
 
-	if (argc == 1)
-		return (0);
-	if (argc == 2)
-		a = get_stack_split(argv[1]);
-	else
-		a = get_stack(argv);
-	b = new_stack();
-	inst = quick_sort(a, b);
-	optimize(inst);
-	print_inst(inst);
-	free_all(inst);
-}
+int	compress_coordinates(int *array, int size);
+
+#endif

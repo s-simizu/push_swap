@@ -5,6 +5,7 @@
         "compress_coodinates.h": "c",
         "exit.h": "c",
         "stack.h": "c",
-        "operations.h": "c"
+        "operations.h": "c",
+        "optimized_step.h": "c"
     }
 }

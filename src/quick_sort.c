@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:58:53 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 01:09:17 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 04:02:08 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <optimized_sort.h>
 #include <stack.h>
 
-static void	save_to_stack(t_stack *s, t_stack *other, int size, t_ops **ops)
+static void	save_to_stack(t_stack *s, t_stack *other, int size, t_ops *ops)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static void	save_to_stack(t_stack *s, t_stack *other, int size, t_ops **ops)
 	{
 		while (i < size)
 		{
-			add_rotate(s, ops);
+			add_rotate(s, other, ops);
 			i++;
 		}
 	}
@@ -34,7 +34,7 @@ static void	save_to_stack(t_stack *s, t_stack *other, int size, t_ops **ops)
 		while (i < size)
 		{
 			add_push(other, s, ops);
-			add_rotate(other, ops);
+			add_rotate(other, s, ops);
 			i++;
 		}
 	}
@@ -60,7 +60,7 @@ static int	get_pivot(t_stack *s, int size)
 	return ((max + min) / 2);
 }
 
-static void	reverse_stack(t_stack *s, int size, t_ops **ops)
+static void	reverse_stack(t_stack *s, t_stack *other, int size, t_ops *ops)
 {
 	int	i;
 
@@ -69,13 +69,13 @@ static void	reverse_stack(t_stack *s, int size, t_ops **ops)
 	i = 0;
 	while (i < size)
 	{
-		add_reverse(s, ops);
+		add_reverse(s, other, ops);
 		i++;
 	}
 }
 
 static int	divide_by_pivot(t_stack *s, t_stack *other, int sort_size,
-		t_ops **ops)
+		t_ops *ops)
 {
 	int	pivot;
 	int	divided_size;
@@ -90,16 +90,16 @@ static int	divide_by_pivot(t_stack *s, t_stack *other, int sort_size,
 			add_push(other, s, ops);
 		else
 		{
-			add_rotate(s, ops);
+			add_rotate(s, other, ops);
 			divided_size++;
 		}
 		i++;
 	}
-	reverse_stack(s, divided_size, ops);
+	reverse_stack(s, other, divided_size, ops);
 	return (divided_size);
 }
 
-void	quick_sort(t_stack *s, t_stack *other, int sort_size, t_ops **ops)
+void	quick_sort(t_stack *s, t_stack *other, int sort_size, t_ops *ops)
 {
 	int	divided_size;
 

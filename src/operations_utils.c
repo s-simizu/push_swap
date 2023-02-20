@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:31:00 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 03:38:06 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 03:50:18 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,6 @@ t_ops	*new_ops(int capacity)
 	ops->size = 0;
 	return (ops);
 }
-
-// static void	realloc_ops(t_ops **ops)
-// {
-// 	t_ops	*new;
-
-// 	new = new_ops((*ops)->capacity * 2);
-// 	if (!new)
-// 	{
-// 		free((*ops)->array);
-// 		free(*ops);
-// 		print_error();
-// 	}
-// 	ft_memcpy(new->array, (*ops)->array, (*ops)->capacity * sizeof(t_op));
-// 	new->capacity = (*ops)->capacity * 2;
-// 	new->size = (*ops)->capacity;
-// 	free((*ops)->array);
-// 	free(*ops);
-// 	*ops = new;
-// }
 
 static int	realloc_ops(t_ops *ops)
 {

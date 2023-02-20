@@ -6,52 +6,53 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:04:42 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 03:41:45 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 03:49:48 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <exit.h>
 #include <operations.h>
 #include <stack.h>
-#include <exit.h>
+
+static void	check_add_error(int result, t_stack *s, t_stack *other, t_ops *ops)
+{
+	if (result == SUCCESS)
+		return ;
+	exit_error(s, other, ops);
+}
 
 void	add_swap(t_stack *s, t_stack *other, t_ops *ops)
 {
-	int result;
-
 	swap(s);
 	if (s->name == STACK_A)
-		result = add_op(ops, SA);
+		check_add_error(add_op(ops, SA), s, other, ops);
 	else
-		result = add_op(ops, SB);
-	if (result == ERROR)
-		exit_error(s, other, ops);
+		check_add_error(add_op(ops, SB), s, other, ops);
 }
 
-void	add_push(t_stack *to, t_stack *from, t_ops **ops)
+void	add_push(t_stack *to, t_stack *from, t_ops *ops)
 {
-	int result;
-
 	push(to, pop(from));
 	if (to->name == STACK_A)
-		result = add_op(ops, PA);
+		check_add_error(add_op(ops, PA), to, from, ops);
 	else
-		result = add_op(ops, PB);
+		check_add_error(add_op(ops, PB), to, from, ops);
 }
 
-void	add_rotate(t_stack *s, t_ops **ops)
+void	add_rotate(t_stack *s, t_stack *other, t_ops *ops)
 {
 	rotate(s);
 	if (s->name == STACK_A)
-		add_op(ops, RA);
+		check_add_error(add_op(ops, RA), s, other, ops);
 	else
-		add_op(ops, RB);
+		check_add_error(add_op(ops, RB), s, other, ops);
 }
 
-void	add_reverse(t_stack *s, t_ops **ops)
+void	add_reverse(t_stack *s, t_stack *other, t_ops *ops)
 {
 	reverse(s);
 	if (s->name == STACK_A)
-		add_op(ops, RRA);
+		check_add_error(add_op(ops, RRA), s, other, ops);
 	else
-		add_op(ops, RRB);
+		check_add_error(add_op(ops, RRB), s, other, ops);
 }

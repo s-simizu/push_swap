@@ -6,19 +6,17 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 00:20:30 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 05:05:47 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 19:17:37 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#include <types.h>
+#include <stack.h>
 
-static int	*sorted_array(int *array, int size)
+static int	*get_sorted_array(int *array, int size)
 {
 	int	*sorted;
 
-	if (!array || !size)
-		return (NULL);
 	sorted = malloc(size * sizeof(int));
 	if (!sorted)
 		return (NULL);
@@ -30,39 +28,31 @@ static int	*sorted_array(int *array, int size)
 int	compress_coordinates(int *array, int size)
 {
 	int	*sorted;
-	int	sorted_index;
-	int	array_index;
+	int	i;
 
-	sorted = sorted_array(array, size);
+	if (!array || !size)
+		return (SUCCESS);
+	sorted = get_sorted_array(array, size);
 	if (!sorted)
 		return (ERROR);
-	array_index = 0;
-	while (array_index < size)
+	i = 0;
+	while (i < size)
 	{
-		sorted_index = 0;
-		while (sorted_index < size)
-		{
-			if (array[array_index] == sorted[sorted_index])
-			{
-				array[array_index] = sorted_index;
-				break ;
-			}
-			sorted_index++;
-		}
-		array_index++;
+		array[i] = ft_search_index(array[i], sorted, size);
+		i++;
 	}
 	free(sorted);
 	return (SUCCESS);
 }
 
-bool	is_sorted(int *array, int size)
+bool	is_sorted(t_stack *s)
 {
 	int	i;
 
-	i = 0;
-	while (i < size - 1)
+	i = 1;
+	while (i < s->size)
 	{
-		if (array[i] > array[i + 1])
+		if (get_top_n(s, i) > get_top_n(s, i + 1))
 			return (false);
 		i++;
 	}

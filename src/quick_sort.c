@@ -6,10 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:58:53 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 04:02:08 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:20:59 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include <operations.h>
 #include <optimized_sort.h>
 #include <stack.h>
@@ -51,10 +52,8 @@ static int	get_pivot(t_stack *s, int size)
 	i = 1;
 	while (i < size)
 	{
-		if (get_top_n(s, i) > max)
-			max = get_top_n(s, i);
-		else if (get_top_n(s, i) < min)
-			min = get_top_n(s, i);
+		max = ft_max(get_top_n(s, i), max);
+		min = ft_min(get_top_n(s, i), min);
 		i++;
 	}
 	return ((max + min) / 2);

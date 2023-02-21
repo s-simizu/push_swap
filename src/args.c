@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:49:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 04:54:51 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 19:16:43 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static bool	int_range(const char *s)
 int	args_into_stack(t_stack *s, int argc, char **argv)
 {
 	int			i;
+	int			val;
 	const char	*arg;
 
 	i = 0;
@@ -66,6 +67,9 @@ int	args_into_stack(t_stack *s, int argc, char **argv)
 	{
 		arg = (const char *)argv[argc - i - 1];
 		if (!int_range(arg))
+			return (ERROR);
+		val = ft_atoi(arg);
+		if (ft_search_index(val, s->array, s->size) >= 0)
 			return (ERROR);
 		push(s, ft_atoi(arg));
 		i++;

@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:05:49 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 05:08:42 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 19:28:12 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		exit_error(a, b, ops);
 	if (compress_coordinates(a->array, a->size) == ERROR)
 		exit_error(a, b, ops);
-	if (!is_sorted(a->array, a->size))
+	if (!is_sorted(a))
 		quick_sort(a, b, a->size, ops);
 	print_ops(ops);
 	free_all(a, b, ops);

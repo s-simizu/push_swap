@@ -6,17 +6,17 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 18:49:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 03:58:48 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:39:02 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <exit.h>
 #include <operations.h>
 
 static void	check_add_error(int result, t_stack *s, t_stack *other, t_ops *ops)
 {
-	if (result == SUCCESS)
-		return ;
-	exit_error(s, other, ops);
+	if (result == ERROR)
+		exit_error(s, other, ops);
 }
 
 void	add_ss(t_stack *s, t_stack *other, t_ops *ops)

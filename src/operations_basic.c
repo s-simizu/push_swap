@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:04:42 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 03:49:48 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:28:06 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 
 static void	check_add_error(int result, t_stack *s, t_stack *other, t_ops *ops)
 {
-	if (result == SUCCESS)
-		return ;
-	exit_error(s, other, ops);
+	if (result == ERROR)
+		exit_error(s, other, ops);
 }
 
 void	add_swap(t_stack *s, t_stack *other, t_ops *ops)

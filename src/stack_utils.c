@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:04:15 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/20 22:38:24 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 05:25:02 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,4 @@ int	get_top_n(t_stack *s, int n)
 		n %= s->capacity;
 	index = (s->top + s->capacity - n) % s->capacity;
 	return (s->array[index]);
-}
-
-void	free_stack(t_stack *s)
-{
-	free(s->array);
-	free(s);
 }

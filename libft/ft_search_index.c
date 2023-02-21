@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.h                                       :+:      :+:    :+:   */
+/*   ft_search_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:47:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 18:30:17 by sshimizu         ###   ########.fr       */
+/*   Created: 2023/02/21 19:12:04 by sshimizu          #+#    #+#             */
+/*   Updated: 2023/02/21 19:16:14 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_UTILS_H
-# define SORT_UTILS_H
+int	ft_search_index(int val, int *array, int size)
+{
+	int	i;
 
-# include <types.h>
-
-int		compress_coordinates(int *array, int size);
-bool	is_sorted(t_stack *s);
-
-#endif
+	i = 0;
+	while (i < size)
+	{
+		if (array[i] == val)
+			return (i);
+		i++;
+	}
+	return (-1);
+}

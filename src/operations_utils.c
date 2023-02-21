@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:31:00 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 04:05:31 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:37:03 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_ops	*new_ops(int capacity)
 
 	ops = malloc(sizeof(t_ops));
 	if (!ops)
-		print_error();
+		return (NULL);
 	ops->array = malloc(capacity * sizeof(t_op));
 	if (!ops->array)
 	{

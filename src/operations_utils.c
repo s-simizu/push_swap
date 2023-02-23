@@ -37,18 +37,14 @@ static int	realloc_ops(t_ops *ops)
 	t_op	*new_array;
 	int		new_size;
 
-	new_size = ft_min(ops->capacity * sizeof(t_op) * 2, INT_MAX);
-	new_array = malloc(new_size);
+	new_size = ops->capacity * 2;
+	new_array = malloc(new_size * sizeof(t_op));
 	if (!new_array)
-	{
-		free(ops->array);
-		free(ops);
 		return (ERROR);
-	}
 	ft_memcpy(new_array, ops->array, ops->capacity * sizeof(t_op));
 	free(ops->array);
 	ops->array = new_array;
-	ops->capacity = ops->capacity * 2;
+	ops->capacity = new_size;
 	ops->size = ops->capacity;
 	return (SUCCESS);
 }

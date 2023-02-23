@@ -5,5 +5,5 @@ a.out
 *.txt
 .vscode
 .DS_Store
-checker
+checker*
 push_swap

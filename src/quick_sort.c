@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:58:53 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 05:20:59 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:43:50 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	get_pivot(t_stack *s, int size)
 	max = get_top_n(s, 1);
 	min = get_top_n(s, 1);
 	i = 1;
-	while (i < size)
+	while (i < size + 1)
 	{
 		max = ft_max(get_top_n(s, i), max);
 		min = ft_min(get_top_n(s, i), min);

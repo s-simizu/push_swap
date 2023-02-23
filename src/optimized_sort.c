@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:02:46 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/23 10:57:16 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:48:24 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static void	sort_3_with_rotate(t_stack *s, t_stack *other, t_ops *ops)
 		add_reverse(s, other, ops);
 	else if (condition_321(s))
 	{
+		add_rotate(s, other, ops);
 		add_swap(s, other, ops);
-		add_reverse(s, other, ops);
 	}
 	else if (condition_132(s))
 	{
-		add_reverse(s, other, ops);
 		add_swap(s, other, ops);
+		add_rotate(s, other, ops);
 	}
 }
 

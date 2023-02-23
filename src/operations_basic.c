@@ -6,13 +6,14 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:04:42 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/23 20:53:54 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:23:57 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <exit.h>
 #include <operations.h>
 #include <stack.h>
+#include <reduce.h>
 
 static void	check_add_error(int result, t_stack *s, t_stack *other, t_ops *ops)
 {
@@ -42,16 +43,32 @@ void	add_rotate(t_stack *s, t_stack *other, t_ops *ops)
 {
 	rotate(s);
 	if (s->name == STACK_A)
+	{
+		if (canceled_rotation(s, RA, ops))
+			return ;
 		check_add_error(add_op(ops, RA), s, other, ops);
+	}
 	else
+	{
+		if (canceled_rotation(s, RB, ops))
+			return ;
 		check_add_error(add_op(ops, RB), s, other, ops);
+	}
 }
 
 void	add_reverse(t_stack *s, t_stack *other, t_ops *ops)
 {
 	reverse(s);
 	if (s->name == STACK_A)
+	{
+		if (canceled_rotation(s, RRA, ops))
+			return ;
 		check_add_error(add_op(ops, RRA), s, other, ops);
+	}
 	else
+	{
+		if (canceled_rotation(s, RRB, ops))
+			return ;
 		check_add_error(add_op(ops, RRB), s, other, ops);
+	}
 }

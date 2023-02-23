@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 00:20:30 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 19:17:37 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 02:20:51 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	compress_coordinates(int *array, int size)
 	return (SUCCESS);
 }
 
-bool	is_sorted(t_stack *s)
+bool	is_sorted(t_stack *s, int size)
 {
 	int	i;
 
 	i = 1;
-	while (i < s->size)
+	while (i < size)
 	{
 		if (get_top_n(s, i) > get_top_n(s, i + 1))
 			return (false);

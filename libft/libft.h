@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/23 21:22:53 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 04:16:10 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <limits.h>
 # include <stdarg.h>
-# include <stdint.h>
 # include <stdbool.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -90,5 +90,6 @@ int					ft_min(int a, int b);
 int					ft_max(int a, int b);
 int					ft_search_index(int val, int *array, int size);
 int					ft_isspace(char c);
+char				*get_next_line(int fd);
 
 #endif

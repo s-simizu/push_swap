@@ -6,11 +6,18 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 04:10:34 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/31 21:40:53 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:34:30 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		print_c(char c, bool *options);
+int		print_s(char *s, bool *options);
+int		print_d(int n, bool *options);
+int		print_u(unsigned int n, bool *options);
+int		print_x(unsigned long n, bool ucase, bool pointer, bool *options);
+int		print_per(void);
 
 int	print_str(char *conv, const char *p)
 {

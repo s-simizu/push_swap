@@ -6,18 +6,12 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:49:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 19:16:43 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:32:24 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <stack.h>
-
-static bool	ft_isspace(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\v' || c == '\n' || c == '\r'
-		|| c == '\f');
-}
 
 static long	get_sign(const char *s, size_t *index)
 {
@@ -56,22 +50,55 @@ static bool	int_range(const char *s)
 	return (true);
 }
 
+static int	free_strs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (ERROR);
+}
+
+static int	push_args(t_stack *s, const char *str)
+{
+	char	**splited;
+	int		val;
+	int		i;
+
+	splited = ft_split(str, ' ');
+	if (!splited)
+		return (ERROR);
+	i = 0;
+	while (splited[i])
+	{
+		if (!int_range(splited[i]))
+			return (free_strs(splited));
+		val = ft_atoi(splited[i]);
+		if (ft_search_index(val, s->array, s->size) >= 0)
+			return (free_strs(splited));
+		if (push(s, val) == ERROR)
+			return (free_strs(splited));
+		rotate(s);
+		i++;
+	}
+	free_strs(splited);
+	return (SUCCESS);
+}
+
 int	args_into_stack(t_stack *s, int argc, char **argv)
 {
 	int			i;
-	int			val;
-	const char	*arg;
 
-	i = 0;
-	while (i < argc - 1)
+	i = 1;
+	while (i < argc)
 	{
-		arg = (const char *)argv[argc - i - 1];
-		if (!int_range(arg))
+		if (push_args(s, argv[i]) == ERROR)
 			return (ERROR);
-		val = ft_atoi(arg);
-		if (ft_search_index(val, s->array, s->size) >= 0)
-			return (ERROR);
-		push(s, ft_atoi(arg));
 		i++;
 	}
 	return (SUCCESS);

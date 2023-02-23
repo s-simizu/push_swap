@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:02:46 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 03:54:56 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:57:16 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <operations.h>
 #include <optimized_step.h>
 #include <stack.h>
-#include <stdbool.h>
 
 static void	sort_2(t_stack *s, t_stack *other, t_ops *ops)
 {

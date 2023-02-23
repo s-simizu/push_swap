@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:14 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 19:16:22 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:22:53 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void				ft_bubble_sort(int *array, size_t size);
 int					ft_min(int a, int b);
 int					ft_max(int a, int b);
 int					ft_search_index(int val, int *array, int size);
+int					ft_isspace(char c);
 
 #endif

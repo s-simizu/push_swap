@@ -6,10 +6,11 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:04:15 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 05:25:02 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:52:35 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include <stdlib.h>
 #include <types.h>
 
@@ -56,4 +57,29 @@ int	get_top_n(t_stack *s, int n)
 		n %= s->capacity;
 	index = (s->top + s->capacity - n) % s->capacity;
 	return (s->array[index]);
+}
+
+int	realloc_stack(t_stack *s)
+{
+	int	*new_array;
+	int	next;
+	int	i;
+
+	new_array = malloc(s->capacity * 2 * sizeof(int));
+	if (!new_array)
+		return (ERROR);
+	i = 0;
+	next = s->bottom;
+	while (i < s->capacity)
+	{
+		new_array[i] = s->array[next];
+		next = next_index(s, next);
+		i++;
+	}
+	free(s->array);
+	s->array = new_array;
+	s->bottom = 0;
+	s->top = s->capacity;
+	s->capacity = s->capacity * 2;
+	return (SUCCESS);
 }

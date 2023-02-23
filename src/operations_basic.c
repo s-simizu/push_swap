@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:04:42 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 05:28:06 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:53:54 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	add_swap(t_stack *s, t_stack *other, t_ops *ops)
 
 void	add_push(t_stack *to, t_stack *from, t_ops *ops)
 {
-	push(to, pop(from));
+	check_add_error(push(to, pop(from)), to, from, ops);
 	if (to->name == STACK_A)
 		check_add_error(add_op(ops, PA), to, from, ops);
 	else

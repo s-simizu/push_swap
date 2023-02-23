@@ -6,19 +6,21 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 09:02:25 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/20 22:19:40 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:52:45 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stack.h>
 
-void	push(t_stack *s, int val)
+int	push(t_stack *s, int val)
 {
 	if (s->size == s->capacity)
-		return ;
+		if (realloc_stack(s) == ERROR)
+			return (ERROR);
 	s->array[s->top] = val;
 	s->top = next_index(s, s->top);
 	s->size++;
+	return (SUCCESS);
 }
 
 int	pop(t_stack *s)

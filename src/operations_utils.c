@@ -44,8 +44,8 @@ static int	realloc_ops(t_ops *ops)
 	ft_memcpy(new_array, ops->array, ops->capacity * sizeof(t_op));
 	free(ops->array);
 	ops->array = new_array;
-	ops->capacity = new_size;
 	ops->size = ops->capacity;
+	ops->capacity = new_size;
 	return (SUCCESS);
 }
 

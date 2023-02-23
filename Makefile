@@ -6,7 +6,7 @@
 #    By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:51:14 by sshimizu          #+#    #+#              #
-#    Updated: 2023/02/24 05:31:24 by sshimizu         ###   ########.fr        #
+#    Updated: 2023/02/24 05:41:11 by sshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,18 @@ debug: CFLAGS += -fsanitize=address
 debug: $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB)$(LIBFT) -o $(NAME)
 
+bonus: $(B_NAME)
+
+$(B_NAME): $(B_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(B_OBJS) $(LIB)$(LIBFT) -o $@
+
+debug-bonus: CFLAGS += -fsanitize=address
+debug-bonus: $(B_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(B_OBJS) $(LIB)$(LIBFT) -o $(B_NAME)
+
 rm:
 	rm -f $(NAME)
+	rm -f $(B_NAME)
 
 args.o: libft.h stack.h types.h
 conditions.o: stack.h types.h
@@ -64,15 +74,6 @@ operate_stack_bonus.o: libft.h stack.h types.h
 $(LIBFT):
 	$(MAKE) -C $(LIB)
 
-bonus: $(B_NAME)
-
-debug-bonus: CFLAGS += -fsanitize=address
-debug-bonus: $(B_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(B_OBJS) $(LIB)$(LIBFT) -o $(B_NAME)
-
-$(B_NAME): $(B_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(B_OBJS) $(LIB)$(LIBFT) -o $@
-
 clean:
 	$(MAKE) fclean -C $(LIB)
 	rm -f $(OBJS)
@@ -84,4 +85,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re debug rm bonus
+.PHONY: all clean fclean re debug rm bonus debug-bonus

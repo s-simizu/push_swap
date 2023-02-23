@@ -6,7 +6,7 @@
 #    By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 14:51:14 by sshimizu          #+#    #+#              #
-#    Updated: 2023/02/23 21:37:27 by sshimizu         ###   ########.fr        #
+#    Updated: 2023/02/23 21:40:27 by sshimizu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ main.o: args.h exit.h operations.h quick_sort.h sort_utils.h stack.h types.h
 operations_basic.o: exit.h operations.h stack.h types.h
 operations_summary.o: exit.h operations.h types.h
 operations_utils.o: libft.h reduce.h types.h
-optimized_sort.o: conditions.h operations.h optimized_step stack.h types.h
+optimized_sort.o: conditions.h operations.h optimized_step.h stack.h types.h
 optimized_step.o: operations.h stack.h types.h
 quick_sort.o: libft.h operations.h optimized_sort.h stack.h types.h
 reduce.o: types.h

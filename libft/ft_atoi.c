@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:08:45 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/21 04:55:33 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:41:43 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ static long	calc(const char *str, int i, int neg)
 		return (val);
 	else
 		return (-val);
-}
-
-static int	ft_isspace(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\v' || c == '\n' || c == '\r'
-		|| c == '\f');
 }
 
 int	ft_atoi(const char *str)

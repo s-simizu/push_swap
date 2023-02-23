@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:49:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/23 21:32:24 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/23 23:47:35 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ static int	push_args(t_stack *s, const char *str)
 	if (!splited)
 		return (ERROR);
 	i = 0;
-	while (splited[i])
+	while (splited[i + 1])
+		i++;
+	while (i >= 0)
 	{
 		if (!int_range(splited[i]))
 			return (free_strs(splited));
@@ -83,8 +85,7 @@ static int	push_args(t_stack *s, const char *str)
 			return (free_strs(splited));
 		if (push(s, val) == ERROR)
 			return (free_strs(splited));
-		rotate(s);
-		i++;
+		i--;
 	}
 	free_strs(splited);
 	return (SUCCESS);
@@ -92,12 +93,12 @@ static int	push_args(t_stack *s, const char *str)
 
 int	args_into_stack(t_stack *s, int argc, char **argv)
 {
-	int			i;
+	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (push_args(s, argv[i]) == ERROR)
+		if (push_args(s, argv[argc - i]) == ERROR)
 			return (ERROR);
 		i++;
 	}

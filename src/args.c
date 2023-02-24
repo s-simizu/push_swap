@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:49:56 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/23 23:47:35 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:05:59 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ static bool	int_range(const char *s)
 	n = 0;
 	i = 0;
 	sign = get_sign(s, &i);
-	while (s[i] != '\0')
+	if (!s[i])
+		return (false);
+	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
 			return (false);
@@ -73,6 +75,8 @@ static int	push_args(t_stack *s, const char *str)
 	splited = ft_split(str, ' ');
 	if (!splited)
 		return (ERROR);
+	if (!splited[0])
+		return (free_strs(splited));
 	i = 0;
 	while (splited[i + 1])
 		i++;

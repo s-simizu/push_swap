@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 04:07:30 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/24 05:37:02 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:43:34 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	char	*op;
 
+	if (argc == 1)
+		return (0);
 	a = new_stack(STACK_A, argc - 1);
 	b = new_stack(STACK_B, argc - 1);
 	if (!a || !b)
@@ -36,7 +38,7 @@ int	main(int argc, char **argv)
 		free(op);
 		op = get_next_line(STDIN_FILENO);
 	}
-	if (is_sorted(a, a->size))
+	if (is_sorted(a, a->size) && b->size == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

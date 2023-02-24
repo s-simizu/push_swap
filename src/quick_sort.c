@@ -6,13 +6,14 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:58:53 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/24 03:43:50 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 20:18:11 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <operations.h>
 #include <optimized_sort.h>
+#include <sort_utils.h>
 #include <stack.h>
 
 static void	save_to_stack(t_stack *s, t_stack *other, int size, t_ops *ops)
@@ -102,6 +103,11 @@ void	quick_sort(t_stack *s, t_stack *other, int sort_size, t_ops *ops)
 {
 	int	divided_size;
 
+	if (is_sorted(s, sort_size))
+	{
+		save_to_stack(s, other, sort_size, ops);
+		return ;
+	}
 	if (sort_size <= 3)
 	{
 		optimized_sort(s, other, sort_size, ops);

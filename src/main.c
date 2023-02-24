@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 00:05:49 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/24 02:29:02 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/24 20:19:12 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 	t_ops	*ops;
 
+	if (argc == 1)
+		return (0);
 	a = new_stack(STACK_A, argc - 1);
 	b = new_stack(STACK_B, argc - 1);
 	ops = new_ops(argc * 20);
@@ -32,8 +34,7 @@ int	main(int argc, char **argv)
 		exit_error(a, b, ops);
 	if (compress_coordinates(a->array, a->size) == ERROR)
 		exit_error(a, b, ops);
-	if (!is_sorted(a, a->size))
-		quick_sort(a, b, a->size, ops);
+	quick_sort(a, b, a->size, ops);
 	print_ops(ops);
 	free_all(a, b, ops);
 }

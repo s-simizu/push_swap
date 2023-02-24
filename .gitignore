@@ -6,4 +6,5 @@ a.out
 .vscode
 .DS_Store
 checker*
+*.sh
 push_swap

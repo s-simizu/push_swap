@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 02:14:46 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/01/21 14:01:02 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:25:15 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		abs = (unsigned int)-n;
+		abs = (unsigned int)(-n);
 	}
 	else
 		abs = n;

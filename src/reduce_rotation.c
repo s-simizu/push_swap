@@ -6,7 +6,7 @@
 /*   By: sshimizu <sshimizu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 03:03:04 by sshimizu          #+#    #+#             */
-/*   Updated: 2023/02/24 03:17:15 by sshimizu         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:15:10 by sshimizu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	count_repeated_op(t_op op, t_ops *ops)
 		if (ops->array[ops->size - i] != op)
 			break ;
 		counter++;
-        i++;
+		i++;
 	}
 	return (counter);
 }
